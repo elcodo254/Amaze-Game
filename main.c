@@ -16,8 +16,10 @@ int main(void)
 	/*infinite loop */
 	while ("C is awesome")
 	{
-		SDL_SetRenderDrawColor(instance.renderer, 0,0,0,0);
+		SDL_SetRenderDrawColor(instance.renderer, 0, 0, 0, 0);
 		SDL_RenderClear(instance.renderer);
+		if (poll_events() == 1)
+			break;
 		/*drawing goes here*/
 		draw_stuff(instance);
 		SDL_RenderPresent(instance.renderer);

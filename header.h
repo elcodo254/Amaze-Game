@@ -3,6 +3,11 @@
 
 #include <stdio.h>
 #include <SDL2/SDL.h>
+#include <stdlib.h>
+#include <math.h>
+#include <unistd.h>
+#include <ctype.h>
+
 
 #define SCREEN_WIDTH 1280
 #define SCREEN_HEIGHT 720
@@ -21,4 +26,5 @@ typedef struct SDL_Instance
 
 int init_instance(SDL_Instance *);
 void draw_stuff(SDL_Instance instance);
+int poll_events(void);
 #endif /*HEADER_H*/
