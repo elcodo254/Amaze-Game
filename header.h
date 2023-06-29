@@ -2,7 +2,7 @@
 #define HEADER_H
 
 #include <stdio.h>
-#include <SDL2/SDL.H>
+#include <SDL2/SDL.h>
 
 #define SCREEN_WIDTH 1280
 #define SCREEN_HEIGHT 720
@@ -20,5 +20,5 @@ typedef struct SDL_Instance
 } SDL_Instance;
 
 int init_instance(SDL_Instance *);
-
+void draw_stuff(SDL_Instance instance);
 #endif /*HEADER_H*/

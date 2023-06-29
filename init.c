@@ -12,8 +12,7 @@ int init_instance(SDL_Instance *instance)
 	/*Initialize SDL */
 	if (SDL_Init(SDL_INIT_VIDEO) != 0)
 	{
-		fprintf(stderr, "SDL failed to initialise:
-				 %s\n", SDL_GetError());
+		fprintf(stderr, "SDL failed initialise: %s\n", SDL_GetError());
 		return (1);
 	}
 	/*create a new window instance */
@@ -33,7 +32,7 @@ int init_instance(SDL_Instance *instance)
 			 SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 	if (instance->renderer == NULL)
 	{
-		SDL_DestroyWindow(window);
+		SDL_DestroyWindow(instance->window);
 		fprintf(stderr, "SDL_CreateRenderer Error: %s\n", SDL_GetError());
 		SDL_Quit();
 		return (1);

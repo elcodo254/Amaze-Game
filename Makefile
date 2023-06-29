@@ -5,11 +5,11 @@ SRC = *.c
 # Object files
 OBJ = $(SRC:.c=.o)
 # Name of executable file
-Name = Game
+Name = maze 
 # Remove files
 RM = rm -f
 # Compiler flags
-CFLAGS = --Wall -Werror -Wextra -pedantic
+CFLAGS = -Wall -Werror -Wextra -pedantic
 # Linker flags
 LFLAGS = -lSDL2 -lSDL2_image -lm
 
@@ -21,8 +21,8 @@ clean:
 	$(RM) *~ $(NAME)
 # Remove object files
 oclean:
-	$(RM)$(OBJ)
+	$(RM) $(OBJ)
 # Remove temporary,object and executable files
 fclean: clean oclean
 # Remove all created files and re-compile
-re: oclean all
+re: fclean all
