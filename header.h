@@ -42,4 +42,5 @@ int *parseMap(char *filename, int *map);
 void draw_World(void);
 int poll_events(void);
 void close_SDL(void);
+void loadTextures(char *mapName)
 #endif /*HEADER_H*/

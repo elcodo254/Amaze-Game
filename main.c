@@ -12,6 +12,7 @@ int main(int argc, char *argv[])
 {
 	int *maze; /*2D array defining maze map*/
 	char *mapName;
+	bool textured;
 
 	/* x and y start position*/
 	pos.x = 22;
@@ -26,7 +27,24 @@ int main(int argc, char *argv[])
 	time = 0;
 
 	mapName = "\0";
-	if (argc == 1)
+	textured = true;
+	if (argc == 3)
+	{
+		if (strcmp(argv[2], "untex") == 0)
+			textured = false;
+		mapName = argv[1];
+	}
+	else if (argc == 2)
+	{
+		if (strcmp(argv[1], "untex") == 0)
+		{
+			mapName = "maps/map_0";
+			textured = false;
+		}
+		else
+			mapName = argv[1];
+	}
+	else if (argc == 1)
 		mapName = "maps/map_0";
 
 	/*start SDL and create window and renderer*/
@@ -38,6 +56,9 @@ int main(int argc, char *argv[])
 	maze = parseMap(mapName, maze);
 	if (maze == NULL)
 		return (1);
+
+	if (textured)
+		loadTextures(mapName);
 
 	/*infinite loop */
 	while ("C is awesome")
