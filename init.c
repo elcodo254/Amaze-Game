@@ -1,41 +1,62 @@
 #include "header.h"
 
 /**
- * init_instance - initializes sdl instance
- * @instance: pointer to an instance
+ * init_instance - initializes sdl
  *
- * Return: 0 on success or negative error code on failure
+ * Return: True on success, False on failure
  */
 
-int init_instance(SDL_Instance *instance)
+bool init_instance(void)
 {
+	bool success = true;
+
+	window = NULL;
+	renderer = NULL;
+
 	/*Initialize SDL */
 	if (SDL_Init(SDL_INIT_VIDEO) != 0)
 	{
 		fprintf(stderr, "SDL failed initialise: %s\n", SDL_GetError());
-		return (1);
+		success = false;
 	}
 	/*create a new window instance */
-	instance->window = SDL_CreateWindow("SDL2", SDL_WINDOWPOS_UNDEFINED,
+	window = SDL_CreateWindow("AMAZE", SDL_WINDOWPOS_UNDEFINED,
 			 SDL_WINDOWPOS_UNDEFINED,
 			  SCREEN_WIDTH, SCREEN_HEIGHT, 0);
 
-	if (instance->window == NULL)
+	if (window == NULL)
 	{
 		fprintf(stderr, "SDL_CreateWindow Error: %s\n", SDL_GetError());
-		SDL_Quit();
-		return (1);
+
+		success = false;
 	}
 
 	/*create new Renderer instance linked to the window*/
-	instance->renderer = SDL_CreateRenderer(instance->window, -1,
+	renderer = SDL_CreateRenderer(instance->window, -1,
 			 SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
-	if (instance->renderer == NULL)
+	if (renderer == NULL)
 	{
-		SDL_DestroyWindow(instance->window);
 		fprintf(stderr, "SDL_CreateRenderer Error: %s\n", SDL_GetError());
-		SDL_Quit();
-		return (1);
+		success = false;
 	}
-	return (0);
+	/*create texture in window*/
+	texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_ARGB8888,
+			SDL_TEXTUREACCESS_STREAMING,
+			SCREEN_WIDTH, SCREEN_HEIGHT);
+	if (texture == NULL)
+	{
+		fprintf(stderr, "SDL_CreateTexture Error: %s\n", SDL_GetError());
+		success = false;
+	}
+	return (success);
+}
+/**
+ * close_SDL - close sdl
+ */
+void close_SDL(void)
+{
+	SDL_DestroyTexture(texture);
+	SDL_DestroyRenderer(renderer);
+	SDL_DestroyWindow(window);
+	SDL_Quit();
 }

@@ -1,5 +1,5 @@
 #include "header.h"
-
+#include "global.h"
 /**
  * main - entry point
  *
@@ -7,10 +7,10 @@
  */
 
 int main(void)
-{
-	SDL_Instance instance;
 
-	if (init_instance(&instance) != 0)
+	/*start SDL and create window and renderer*/
+
+	if (init_instance() != 0)
 		return (1);
 
 	/*infinite loop */

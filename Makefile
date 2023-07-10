@@ -5,7 +5,7 @@ SRC = *.c
 # Object files
 OBJ = $(SRC:.c=.o)
 # Name of executable file
-Name = maze 
+Name = main
 # Remove files
 RM = rm -f
 # Compiler flags
@@ -15,7 +15,7 @@ LFLAGS = -lSDL2 -lSDL2_image -lm
 
 # Compilation
 all: $(SRC)
-	$(CC) $(SRC) $(CFLAGS) $(LFLAGS) -o $(NAME)
+	$(CC) $(SRC) $(CFLAGS) $(LFLAGS) -o main
 # Remove temporary files and executable
 clean:
 	$(RM) *~ $(NAME)
