@@ -63,10 +63,12 @@ int main(int argc, char *argv[])
 	/*infinite loop */
 	while ("C is awesome")
 	{
-		if (poll_events() == 1)
-			break;
-		draw_World();
+		if (!textured)
+			draw_World();/*flat */
+		raycast(maze, textured);
+		input(maze);
 	}
 	close_SDL();
+	free(maze);
 	return (0);
 }
