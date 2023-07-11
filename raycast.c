@@ -14,25 +14,17 @@ void raycaster(int *maze, bool textured)
 	vec deltaDist; /*length of ray from one x/y-side to next x/y-side*/
 	SDL_Point map; /*x/y points for box of the we are in*/
 	SDL_Point step; /* x/y direction to step in*/
-
 	int hit;/*check if wall was hit*/
 	int side;/*which wall was hit N/S or E/W*/
-
-	int x;/*ray counter*/
-
 	/*cast ray for every column*/
 	for (x = 0; x < SCREEN_WIDTH; x++)
 	{
 		/*calculate ray position and direction*/
 		cameraX = 2 * x / (double)(SCREEN_WIDTH) - 1;
-		/*ray position starts at players initial position*/
 		rayPos.x = pos.x;
 		rayPos.y = pos.y;
-		/*ray direction*/
 		rayDir.x = dir.x + plane.x * cameraX;
 		rayDir.y = dir.y + plane.y * cameraX;
-
-		/*current box on the map*/
 		map.x = (int)(rayPos.x);
 		map.y = (int)(rayPos.y);
 		/*calculate length of ray to next x/y-side*/
@@ -42,7 +34,7 @@ void raycaster(int *maze, bool textured)
 		if (rayDir.x < 0)
 		{
 			step.x = -1;
-			sideDist.x = (pos.x - map.x) * deltaDist.x;
+			sideDist.x = (rayPos.x - map.x) * deltaDist.x;
 		}
 		else
 		{
@@ -52,8 +44,12 @@ void raycaster(int *maze, bool textured)
 		if (rayDir.y < 0)
 		{
 			step.y = -1;
-			sideDist.y = (map.y + 1.0 - rayPos.x) * deltaDist.y;
+			sideDist.y = (rayPos.y - map.y) * deltaDist.y;
 		}
+		else
+		{
+			step.y = 1;
+			sideDist.y = (map.y + 1.0 - rayPos.y) * deltaDist.y;
 		/*perform DDA(Digital Differential Analysis)*/
 		hit = 0;
 		while (hit == 0)
@@ -80,6 +76,8 @@ void raycaster(int *maze, bool textured)
 			perpWallDist = (sideDist.x - deltaDist.x);
 		else
 			perpWallDist = (sideDist.y - deltaDist.y);
+		/*Draw walls to buffer*/
+		draw_walls(maze, map, rayDir, perpWallDist, x, side, textured);
 	}
 	/* update buffer*/
 	updateRenderer(textured);

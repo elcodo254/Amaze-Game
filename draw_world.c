@@ -29,4 +29,3 @@ void draw_World(void)
 	SDL_SetRenderDrawColor(renderer, 0x1E, 0x29, 0x34, 0xFF);
 	SDL_SetRenderFillRect(renderer, &floor);
 }
-
