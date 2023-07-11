@@ -14,7 +14,7 @@ void draw_World(void)
 	ceiling.x = 0;
 	ceiling.y = 0;
 	ceiling.w = width;
-	ceiling.h = height /2;
+	ceiling.h = height / 2;
 
 	floor.x = 0;
 	floor.y = height / 2;

@@ -6,10 +6,40 @@
  */
 void loadTextures(char *mapName)
 {
-	/*array of loaded textures*/
-	SDL_Surface *texSrc[TEX_COUNT];
-	uint8_t *pixel;/*color value*/
+	SDL_Surface *texSrc[TEX_COUNT];/*array of loaded textures*/
+	uint8_t *pixel; /*color value*/
 	int i, j, k;/*loop counters*/
+
+	texture_load(mapName);
+	/* get colors from texture pixel*/
+	for (i = 0; i < TEX_COUNT; i++)
+	{
+		for (j = 0; j < TEX_HEIGHT; j++)
+		{
+			for (k = 0; k < TEX_WIDTH; k++)
+			{
+				pixel = (uint8_t *)texSrc[i]->pixels
+					+ k * texSrc[i]->pitch +
+					j * texSrc[i]->format->BytesPerPixel;
+				tiles[i][j][k] = pixel[0] | pixel[1] << 8 | pixel[2] << 16;
+			}
+		}
+	}
+	/*free SDL_SSurfaces*/
+	for (i = 0; i < TEX_COUNT; i++)
+	{
+		SDL_FreeSurface(texSrc[i]);
+		texSrc[i] = NULL;
+	}
+}
+
+/**
+ * texture_load: store textures in an array
+ * @mapName: map name
+ */
+texture_load(char *mapName)
+{
+	SDL_Surface *texSrc[TEX_COUNT];/*array of loaded textures*/
 
 	if (strcmp(mapName, "maps/map_0") == 0)
 	{
@@ -27,26 +57,6 @@ void loadTextures(char *mapName)
 		texSrc[2] = IMG_Load("textures/gate.png");
 		texSrc[3] = IMG_Load("textures/hedge1.png");
 		texSrc[4] = IMG_Load("textures/sky.png");
-		texSrc[5] = IMG_Load("textures/grass.png")
-	}
-	/* get colors from texture pixel*/
-	for (i = 0; i < TEX_COUNT; i++)
-	{
-		for (j = 0; j < TEX_HEIGHT; j++)
-		{
-			for (k = 0; k < TEX_WIDTH; k++)
-			{
-				pixel = (uint8_t *)texSrc[i]->pixels
-					+k * texSrc[i]->pitch +
-					j * texSrc[i]->format->BytesPerPixel;
-				tiles[i][j][k] = pixel[0] | pixel[1] << 8 | pixel[2] << 16;
-			}
-		}
-	}
-	/*free SDL_SSurfaces*/
-	for (i = 0; i < TEX_COUNT; i++)
-	{
-		SDL_FreeSurface(texSrc[i]);
-		texSrc[i] = NULL;
+		texSrc[5] = IMG_Load("textures/grass.png");
 	}
 }

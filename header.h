@@ -1,7 +1,6 @@
 #ifndef HEADER_H
 #define HEADER_H
 
-
 #define SCREEN_WIDTH 1280
 #define SCREEN_HEIGHT 720
 #define TEX_COUNT 6
@@ -13,6 +12,7 @@
 #include <stdio.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
+#include <SDL2/SDL_surface.h>
 #include <stdlib.h>
 #include <math.h>
 #include <unistd.h>

@@ -3,7 +3,7 @@
 /**
  * parseMap - parse array from file to create maze
  * @filename: file name of map
- * @map: 2d array 
+ * @map: 2d array
  * Return: pointer to map
  */
 int *parseMap(char *filename, int *map)
