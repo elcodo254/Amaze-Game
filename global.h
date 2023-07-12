@@ -4,7 +4,7 @@
 #include "header.h"
 
 /* renderers*/
-extern SDL_Window *widow;
+extern SDL_Window *window;
 extern SDL_Renderer *renderer;
 extern SDL_Texture *texture;
 

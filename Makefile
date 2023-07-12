@@ -15,7 +15,7 @@ LFLAGS = -lSDL2 -lSDL2_image -lm
 
 # Compilation
 all: $(SRC)
-	$(CC) $(SRC) $(CFLAGS) $(LFLAGS) -o main
+	$(CC) $(SRC) $(CFLAGS) $(LFLAGS) -o $(NAME)
 # Remove temporary files and executable
 clean:
 	$(RM) *~ $(NAME)

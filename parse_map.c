@@ -9,7 +9,7 @@
 int *parseMap(char *filename, int *map)
 {
 	FILE *fp;
-	char *row[MAP_WIDTH * 2];
+	char row[MAP_WIDTH * 2];
 	char *number;
 	int i, j;
 

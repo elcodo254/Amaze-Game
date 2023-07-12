@@ -31,7 +31,7 @@ bool init_instance(void)
 	}
 
 	/*create new Renderer instance linked to the window*/
-	renderer = SDL_CreateRenderer(instance->window, -1,
+	renderer = SDL_CreateRenderer(window, -1,
 			 SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 	if (renderer == NULL)
 	{

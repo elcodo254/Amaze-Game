@@ -48,7 +48,6 @@ int main(int argc, char *argv[])
 		mapName = "maps/map_0";
 
 	/*start SDL and create window and renderer*/
-
 	if (init_instance() != 0)
 		return (1);
 	/*parse maze file*/
@@ -61,12 +60,14 @@ int main(int argc, char *argv[])
 		loadTextures(mapName);
 
 	/*infinite loop */
-	while ("C is awesome")
+	while (1)
 	{
+		if (poll_events() == 1)
+			break;
 		if (!textured)
 			draw_World();/*flat */
-		raycast(maze, textured);
-		input(maze);
+		raycaster(maze, textured);
+		movement(maze);
 	}
 	close_SDL();
 	free(maze);

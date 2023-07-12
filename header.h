@@ -12,9 +12,9 @@
 #include <stdio.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
-#include <SDL2/SDL_surface.h>
 #include <stdlib.h>
 #include <math.h>
+#include <stdint.h>
 #include <unistd.h>
 #include <ctype.h>
 #include <string.h>
@@ -37,10 +37,22 @@ typedef struct point_s
         double y;
 } point_t;
 
-bool init_instance(void);
 int *parseMap(char *filename, int *map);
+void loadTextures(char *mapName);
+bool init_instance(void);
+void updateRenderer(bool textured);
 void draw_World(void);
+void draw_walls(int *maze, SDL_Point map, vec rayPos, vec rayDir,
+                double perpWallDist, int x, int side, bool textured);
+void drawUntex_walls(double perpWallDist, int x, int side);
+void drawTex_floor(SDL_Point map, vec rayDir, double perpWallDist,
+                double wallX, int drawEnd, int x, int side);
+void raycaster(int *maze, bool textured);
+void movement(int *maze);
+void backForward(int *maze);
+void cameraRotate(void);
+void init_calculations(void);
+
 int poll_events(void);
 void close_SDL(void);
-void loadTextures(char *mapName)
 #endif /*HEADER_H*/
