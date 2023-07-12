@@ -1,4 +1,4 @@
-#include "header.h"
+#include "headers/header.h"
 
 /**
  * parseMap - parse array from file to create maze

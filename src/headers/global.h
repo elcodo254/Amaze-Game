@@ -1,8 +1,6 @@
 #ifndef GLOBAL_H
 #define GLOBAL_H
 
-#include "header.h"
-
 /* renderers*/
 extern SDL_Window *window;
 extern SDL_Renderer *renderer;

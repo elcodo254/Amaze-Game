@@ -1,4 +1,4 @@
-#include "header.h"
+#include "headers/header.h"
 
 /**
  * loadTextures - loads textures for the walls and ceiling

@@ -1,4 +1,4 @@
-#include"header.h"
+#include"headers/header.h"
 /**
  * raycaster - cast rays to draw ceiling,floor and walls
  * @maze: 2D array defining maze

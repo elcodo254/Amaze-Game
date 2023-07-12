@@ -1,7 +1,7 @@
 # Compiler
 CC = gcc
 # Source files
-SRC = *.c
+SRC = src/*.c
 # Object files
 OBJ = $(SRC:.c=.o)
 # Name of executable file

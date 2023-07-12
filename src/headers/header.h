@@ -9,9 +9,9 @@
 #define MAP_WIDTH 24
 #define MAP_HEIGHT 24
 
-#include <stdio.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 #include <stdint.h>
