@@ -25,17 +25,6 @@
 #include "structs.h"
 #include "global.h"
 
-/**
- * struct point_s - defines double vector points
- * @x: point x
- * @y: point y
- */
-
-typedef struct point_s
-{
-        double x;
-        double y;
-} point_t;
 
 int *parseMap(char *filename, int *map);
 void loadTextures(char *mapName);
@@ -53,6 +42,6 @@ void backForward(int *maze);
 void cameraRotate(void);
 void init_calculations(void);
 
-int poll_events(void);
+bool poll_events(void);
 void close_SDL(void);
 #endif /*HEADER_H*/

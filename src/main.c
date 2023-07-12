@@ -1,5 +1,17 @@
 #include "headers/header.h"
 
+/*global variable*/
+SDL_Window *window;
+SDL_Renderer *renderer;
+SDL_Texture *texture;
+uint32_t buffer[SCREEN_HEIGHT][SCREEN_WIDTH];
+uint32_t tiles[TEX_COUNT][TEX_HEIGHT][TEX_WIDTH];
+vec pos;
+vec dir;
+vec plane;
+double time;
+
+
 /**
  * main - entry point
  * @argc: arguments count
@@ -60,10 +72,8 @@ int main(int argc, char *argv[])
 		loadTextures(mapName);
 
 	/*infinite loop */
-	while (1)
+	while (!poll_events())
 	{
-		if (poll_events() == 1)
-			break;
 		if (!textured)
 			draw_World();/*flat */
 		raycaster(maze, textured);
