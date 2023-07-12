@@ -3,26 +3,27 @@
  * poll_events - retrieves events on each frame
  * Return:0 on success
  */
-int poll_events(void)
+bool poll_events(void)
 {
 	SDL_Event event;
 	SDL_KeyboardEvent key;
+	bool quit;
 
-	while (SDL_PollEvent(&event))
+	quit = false;
+	while (SDL_PollEvent(&event) != 0)
 	{
 		switch (event.type)
 		{
 			case SDL_QUIT:
-				return (1);
+				quit = true;
 			case SDL_KEYDOWN:
 				key = event.key;
 				/* If 'ESC' is pressed*/
 				if (key.keysym.scancode == 0X29)
-					return (1);
-				break;
+				quit = true;
 		}
 	}
-	return (0);
+	return (quit);
 }
 
 

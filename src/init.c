@@ -22,7 +22,7 @@ bool init_instance(void)
 	/*create a new window instance */
 	window = SDL_CreateWindow("AMAZE", SDL_WINDOWPOS_UNDEFINED,
 			 SDL_WINDOWPOS_UNDEFINED,
-			  SCREEN_WIDTH, SCREEN_HEIGHT, 0);
+			  SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
 	if (window == NULL)
 	{
 		fprintf(stderr, "SDL_CreateWindow Error: %s\n", SDL_GetError());
@@ -32,7 +32,7 @@ bool init_instance(void)
 
 	/*create new Renderer instance linked to the window*/
 	renderer = SDL_CreateRenderer(window, -1,
-			 SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+			 SDL_RENDERER_ACCELERATED);
 	if (renderer == NULL)
 	{
 		fprintf(stderr, "SDL_CreateRenderer Error: %s\n", SDL_GetError());
