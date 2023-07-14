@@ -60,7 +60,7 @@ int main(int argc, char *argv[])
 		mapName = "maps/map_0";
 
 	/*start SDL and create window and renderer*/
-	if (init_instance() != 0)
+	if (!init_instance())
 		return (1);
 	/*parse maze file*/
 	maze = NULL;
