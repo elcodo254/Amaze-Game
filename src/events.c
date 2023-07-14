@@ -16,11 +16,13 @@ bool poll_events(void)
 		{
 			case SDL_QUIT:
 				quit = true;
+				break;
 			case SDL_KEYDOWN:
 				key = event.key;
 				/* If 'ESC' is pressed*/
 				if (key.keysym.scancode == 0X29)
 				quit = true;
+				break;
 		}
 	}
 	return (quit);
