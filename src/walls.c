@@ -20,22 +20,19 @@ void draw_walls(int *maze, SDL_Point map, vec rayPos, vec rayDir,
 	double wallX;/*where wall was hit*/
 	SDL_Point tex;/*x/y points of texture pixel*/
 	uint32_t color;/*pixel color*/
-	int width;/*current window width*/
-	int height;/*current window height*/
 	int y;
 
+	/*calculate height of line to draw on scree*/
+	lineHeight = (int)(SCREEN_HEIGHT/ perpWallDist);
+	/*calculate lowest & highest pixel to fill in current stripe*/
+	drawStart = -lineHeight / 2 + SCREEN_HEIGHT / 2;
+	if (drawStart < 0)
+		drawStart = 0;
+	drawEnd = lineHeight / 2 + SCREEN_HEIGHT / 2;
+	if (drawEnd >= SCREEN_HEIGHT)
+		drawEnd = SCREEN_HEIGHT - 1;
 	if (!textured)
 	{
-		SDL_GetWindowSize(window, &width, &height);
-		/*calculate height of line to draw on scree*/
-		lineHeight = (int)(height / perpWallDist);
-		/*calculate lowest & highest pixel to fill in current stripe*/
-		drawStart = -lineHeight / 2 + height / 2;
-		if (drawStart < 0)
-			drawStart = 0;
-		drawEnd = lineHeight / 2 + height / 2;
-		if (drawEnd >= height)
-			drawEnd = height - 1;
 		/*set wall colors depending on if side face*/
 		if (side == 0)
 			SDL_SetRenderDrawColor(renderer, 0xF7, 0xF7, 0xF7, 0xFF);
@@ -46,16 +43,7 @@ void draw_walls(int *maze, SDL_Point map, vec rayPos, vec rayDir,
 	}
 	else
 	{
-		/*calculate height of line to draw on screen*/
-		lineHeight = (int)(SCREEN_HEIGHT / perpWallDist);
-		/*calculate lowest & highest pixel to fill in current stripe*/
-		drawStart = -lineHeight / 2 + SCREEN_HEIGHT / 2;
-		if (drawStart < 0)
-			drawStart = 0;
-		drawEnd = lineHeight / 2 + SCREEN_HEIGHT / 2;
-		if (drawEnd >= SCREEN_HEIGHT)
-			drawEnd = SCREEN_HEIGHT - 1;
-		wallX = 0; /*where exactly the wall was hit*/
+		wallX = 0;
 		if (side == 0)
 			wallX = rayPos.y + perpWallDist * rayDir.y;
 		else if (side == 1)
@@ -80,39 +68,6 @@ void draw_walls(int *maze, SDL_Point map, vec rayPos, vec rayDir,
 		drawTex_floor(map, rayDir, perpWallDist, wallX, drawEnd, x, side);
 	}
 }
-
-
-/**
- * drawUntex_walls - draws untextured walls
- * @side: determines where wall is facing(N/S or E/W)
- */
-void drawUntex_walls(double perpWallDist, int x, int side)
-{
-	int lineHeight;
-	int drawStart;
-	int drawEnd;
-	int width;
-	int height;
-
-	SDL_GetWindowSize(window, &width, &height);
-	/*calculate height of line to draw on scree*/
-	lineHeight = (int)(height / perpWallDist);
-	/*calculate lowest & highest pixel to fill in current stripe*/
-	drawStart = -lineHeight / 2 + height / 2;
-	if (drawStart < 0)
-		drawStart = 0;
-	drawEnd = lineHeight / 2 + height / 2;
-	if (drawEnd >= height)
-		drawEnd = height - 1;
-	/*set wall colors depending on if side face*/
-	if (side == 0)
-		SDL_SetRenderDrawColor(renderer, 0xF7, 0xF7, 0xF7, 0xFF);
-	else if (side == 1)
-		SDL_SetRenderDrawColor(renderer, 0xDE, 0xDE, 0xDE, 0xFF);
-	/*draw pixel as vertical line*/
-	SDL_RenderDrawLine(renderer, x, drawStart, x, drawEnd);
-}
-
 
 /**
  * drawTex_floor - draws textured floor and ceiling
