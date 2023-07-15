@@ -33,15 +33,12 @@ void updateRenderer(bool textured);
 void draw_World(void);
 void draw_walls(int *maze, SDL_Point map, vec rayPos, vec rayDir,
                 double perpWallDist, int x, int side, bool textured);
-void drawUntex_walls(double perpWallDist, int x, int side);
 void drawTex_floor(SDL_Point map, vec rayDir, double perpWallDist,
                 double wallX, int drawEnd, int x, int side);
 void raycaster(int *maze, bool textured);
 void movement(int *maze);
 void backForward(int *maze);
 void cameraRotate(void);
-void init_calculations(void);
-
 bool poll_events(void);
 void close_SDL(void);
 #endif /*HEADER_H*/

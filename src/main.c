@@ -38,6 +38,7 @@ int main(int argc, char *argv[])
 	/*time of current frame*/
 	time = 0;
 
+	/* check user arguments and set options*/
 	mapName = "\0";
 	textured = true;
 	if (argc == 3)

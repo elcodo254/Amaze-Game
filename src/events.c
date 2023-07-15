@@ -49,7 +49,8 @@ void backForward(int *maze)
 	double oldTime; /*previous time frame*/
 	double frameTime; /*time frame*/
 	double moveSpeed; /*move speed*/
-
+	double oldDirX, oldPlaneX; /*previous x points od dir plane*/
+	double rotateSpeed;/*rotate speed*/ 
 	keystate = SDL_GetKeyboardState(NULL);
 	oldTime = time;
 	time = SDL_GetTicks();
@@ -76,25 +77,13 @@ void backForward(int *maze)
 		       (int)(pos.y - dir.y * moveSpeed)))
 			pos.y -= dir.y * moveSpeed;
 	}
-}
 
-
-/**
- * cameraRotate - checks user input for camera rotation
- */
-void cameraRotate(void)
-{
-	const uint8_t *keystate; /* current key state */
-	double oldTime; /*previous time frame*/
-	double frameTime; /*time frame*/
-	double oldDirX, oldPlaneX; /*previous dir.x and plane.x*/
-	double rotateSpeed; /*move speed*/
-
-	keystate = SDL_GetKeyboardState(NULL);
-	oldTime = time;
-	time = SDL_GetTicks();
-	frameTime = (time - oldTime) / 1000.0;
-	rotateSpeed = frameTime * 3.0;
+	/*strafe left*/
+	if (keystate[SDL_SCANCODE_S])
+	{
+		if (!*((int *)maze + (int)(pos.x - dir.x * moveSpeed) *
+                       MAP_WIDTH + (int)(pos.y)))
+			pos.x -= dir.x * moveSpeed
 
 	/*rotate left*/
 	if (keystate[SDL_SCANCODE_D])
