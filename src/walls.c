@@ -61,7 +61,7 @@ void draw_walls(int *maze, SDL_Point map, vec rayPos, vec rayDir,
 		else if (side == 1)
 			wallX = rayPos.x + perpWallDist * rayDir.x;
 		tileIndex = *((int *)maze + map.x * MAP_WIDTH + map.y) - 1;
-		wallX -= floor((wallX));/*floor returns largest int value*/
+		wallX -= floor(wallX);/*floor returns largest int value*/
 		/* get X coordinate of texture corresponding to ray hit */
 		tex.x = (int)(wallX * (double)TEX_WIDTH);
 		if (side == 0 && rayDir.x > 0)
