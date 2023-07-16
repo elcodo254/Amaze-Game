@@ -7,7 +7,7 @@ Name = maze
 # Remove files
 RM = rm -f
 # Compiler flags
-CFLAGS = -Wall -Werror -Wextra -pedantic
+CFLAGS = -g -Wall -Werror -Wextra -pedantic
 # Linker flags
 LFLAGS = -lSDL2 -lSDL2_image -lm
 

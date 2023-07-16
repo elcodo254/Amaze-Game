@@ -92,7 +92,7 @@ void movement(int *maze)
 
 
 	/*rotate left*/
-	if (keystate[SDL_SCANCODE_D])
+	if (keystate[SDL_SCANCODE_A])
 	{
 		/*rotate camera direction*/
 		oldDirX = dir.x;
@@ -106,7 +106,7 @@ void movement(int *maze)
 			+ plane.y * cos(rotateSpeed);
 	}
 	/*roate right*/
-	if (keystate[SDL_SCANCODE_A])
+	if (keystate[SDL_SCANCODE_D])
 	{
 		/*rotate camera direction*/
 		oldDirX = dir.x;
