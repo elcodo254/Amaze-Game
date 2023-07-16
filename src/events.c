@@ -56,7 +56,7 @@ void movement(int *maze)
 			pos.x += dir.x * moveSpeed;
 		if (!*((int *)maze + (int)pos.x * MAP_WIDTH +
 		       (int)(pos.y + dir.y * moveSpeed)))
-			pos.y = dir.y * moveSpeed;
+			pos.y += dir.y * moveSpeed;
 	}
 	/*move back*/
 	if (keystate[SDL_SCANCODE_S])

@@ -3,7 +3,7 @@ CC = gcc
 # Source files
 SRC = src/*.c
 # Name of executable file
-Name = main
+Name = maze 
 # Remove files
 RM = rm -f
 # Compiler flags
@@ -13,7 +13,7 @@ LFLAGS = -lSDL2 -lSDL2_image -lm
 
 # Compilation
 all: $(SRC)
-	$(CC) $(SRC) $(CFLAGS) $(LFLAGS) -o $(NAME)
+	$(CC) $(SRC) $(CFLAGS) $(LFLAGS) -o maze 
 # Remove temporary files and executable
 clean:
 	$(RM) *~ $(NAME)
