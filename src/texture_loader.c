@@ -12,12 +12,12 @@ void loadTextures(char *mapName)
 
 	if (strcmp(mapName, "maps/map_0") == 0)
 	{
-		texSrc[0] = IMG_Load("textures/wall1.png");
-		texSrc[1] = IMG_Load("textures/wall2.png");
-		texSrc[2] = IMG_Load("textures/windowtree.png");
-		texSrc[3] = IMG_Load("textures/windowspooky.png");
-		texSrc[4] = IMG_Load("textures/ceiling.png");
-		texSrc[5] = IMG_Load("textures/floorboards.png");
+		texSrc[0] = IMG_Load("textures/wolfstein_tex/bluestone.png");
+		texSrc[1] = IMG_Load("textures/wolfstein_tex/redbrick.png");
+		texSrc[2] = IMG_Load("textures/wolfstein_tex/eagle.png");
+		texSrc[3] = IMG_Load("textures/wolfstein_tex/wood.png");
+		texSrc[4] = IMG_Load("textures/wolfstein_tex/purplestone.png");
+		texSrc[5] = IMG_Load("textures/wolfstein_tex/greystone.png");
 	}
 	else
 	{
