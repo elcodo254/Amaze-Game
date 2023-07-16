@@ -72,9 +72,9 @@ void raycaster(int *maze, bool textured)
 		}
 		/*calculate distance projected in camera direction*/
 		if (side == 0)
-			perpWallDist = (sideDist.x - deltaDist.x);
+			perpWallDist = (map.x - rayPos.x + (1 - step.x) / 2) / rayDir.x;
 		else
-			perpWallDist = (sideDist.y - deltaDist.y);
+			perpWallDist = (map.y - rayPos.y + (1 - step.y) / 2) / rayDir.y;
 		draw_walls(maze, map, rayPos, rayDir, perpWallDist, x, side, textured);
 	}
 	updateRenderer(textured);/*update buffer*/
