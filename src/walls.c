@@ -20,19 +20,22 @@ void draw_walls(int *maze, SDL_Point map, vec rayPos, vec rayDir,
 	double wallX;/*where wall was hit*/
 	SDL_Point tex;/*x/y points of texture pixel*/
 	uint32_t color;/*pixel color*/
+	int width;/*current window width*/
+	int height;/*current window height*/
 	int y;
 
-	/*calculate height of line to draw on scree*/
-	lineHeight = (int)(SCREEN_HEIGHT / perpWallDist);
-	/*calculate lowest & highest pixel to fill in current stripe*/
-	drawStart = -lineHeight / 2 + SCREEN_HEIGHT / 2;
-	if (drawStart < 0)
-		drawStart = 0;
-	drawEnd = lineHeight / 2 + SCREEN_HEIGHT / 2;
-	if (drawEnd >= SCREEN_HEIGHT)
-		drawEnd = SCREEN_HEIGHT - 1;
 	if (!textured)
 	{
+		SDL_GetWindowSize(window, &width, &height);
+		/*calculate height of line to draw on scree*/
+		lineHeight = (int)(height / perpWallDist);
+		/*calculate lowest & highest pixel to fill in current stripe*/
+		drawStart = -lineHeight / 2 + height / 2;
+		if (drawStart < 0)
+			drawStart = 0;
+		drawEnd = lineHeight / 2 +  height / 2;
+		if (drawEnd >= height) 
+			drawEnd = height - 1;
 		/*set wall colors depending on if side face*/
 		if (side == 0)
 			SDL_SetRenderDrawColor(renderer, 0xF7, 0xF7, 0xF7, 0xFF);
@@ -43,6 +46,15 @@ void draw_walls(int *maze, SDL_Point map, vec rayPos, vec rayDir,
 	}
 	else
 	{
+		/*calculate height of line to draw on screen*/
+        	lineHeight = (int)(SCREEN_HEIGHT / perpWallDist);
+		/*calculate lowest & highest pixel to fill in current stripe*/
+		drawStart = -lineHeight / 2 + SCREEN_HEIGHT / 2;
+		if (drawStart < 0)
+			drawStart = 0;
+		drawEnd = lineHeight / 2 + SCREEN_HEIGHT / 2;
+		if (drawEnd >= SCREEN_HEIGHT)
+			drawEnd = SCREEN_HEIGHT - 1;
 		wallX = 0;
 		if (side == 0)
 			wallX = rayPos.y + perpWallDist * rayDir.y;
