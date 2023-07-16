@@ -23,7 +23,7 @@ void draw_walls(int *maze, SDL_Point map, vec rayPos, vec rayDir,
 	int y;
 
 	/*calculate height of line to draw on scree*/
-	lineHeight = (int)(SCREEN_HEIGHT/ perpWallDist);
+	lineHeight = (int)(SCREEN_HEIGHT / perpWallDist);
 	/*calculate lowest & highest pixel to fill in current stripe*/
 	drawStart = -lineHeight / 2 + SCREEN_HEIGHT / 2;
 	if (drawStart < 0)

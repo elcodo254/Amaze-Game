@@ -35,27 +35,18 @@ bool poll_events(void)
  */
 void movement(int *maze)
 {
-	backForward(maze);
-	cameraRotate();
-}
-
-/**
- * backForward - checks user input for movement
- * @maze: 2D array defining maze map
- */
-void backForward(int *maze)
-{
 	const uint8_t *keystate; /* current key state */
 	double oldTime; /*previous time frame*/
 	double frameTime; /*time frame*/
 	double moveSpeed; /*move speed*/
 	double oldDirX, oldPlaneX; /*previous x points od dir plane*/
-	double rotateSpeed;/*rotate speed*/ 
+	double rotateSpeed;/*rotate speed*/
 	keystate = SDL_GetKeyboardState(NULL);
 	oldTime = time;
 	time = SDL_GetTicks();
 	frameTime = (time - oldTime) / 1000.0;
 	moveSpeed = frameTime * 5.0;
+	rotateSpeed = frameTime * 3.0;
 
 	/*move forward*/
 	if (keystate[SDL_SCANCODE_W])
@@ -79,11 +70,26 @@ void backForward(int *maze)
 	}
 
 	/*strafe left*/
-	if (keystate[SDL_SCANCODE_S])
+	if (keystate[SDL_SCANCODE_Q])
 	{
-		if (!*((int *)maze + (int)(pos.x - dir.x * moveSpeed) *
-                       MAP_WIDTH + (int)(pos.y)))
-			pos.x -= dir.x * moveSpeed
+		if (!*((int *)maze + (int)(pos.x - plane.x * moveSpeed) *
+		       MAP_WIDTH + (int)(pos.y)))
+			pos.x -= plane.x * moveSpeed;
+		if (!*((int *)maze + (int)(pos.x) * MAP_WIDTH +
+		       (int)(pos.y - plane.y * moveSpeed)))
+			pos.y -= plane.y * moveSpeed;
+	}
+	/*strafe right*/
+	if (keystate[SDL_SCANCODE_E])
+	{
+		if (!*((int *)maze + (int)(pos.x + plane.x * moveSpeed) *
+		       MAP_WIDTH + (int)(pos.y)))
+			pos.x += plane.x * moveSpeed;
+		if (!*((int *)maze + (int)(pos.x) * MAP_WIDTH +
+		       (int)(pos.y + plane.y * moveSpeed)))
+			pos.y += plane.y * moveSpeed;
+	}
+
 
 	/*rotate left*/
 	if (keystate[SDL_SCANCODE_D])

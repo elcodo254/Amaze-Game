@@ -6,7 +6,7 @@
  */
 void loadTextures(char *mapName)
 {
-	SDL_Surface *texSrc[TEX_COUNT];/*array of loaded textures*/
+	SDL_Surface * texSrc[TEX_COUNT];/*array of loaded textures*/
 	uint8_t *pixel; /*color value*/
 	int i, j, k;/*loop counters*/
 

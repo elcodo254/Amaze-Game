@@ -37,8 +37,6 @@ void drawTex_floor(SDL_Point map, vec rayDir, double perpWallDist,
                 double wallX, int drawEnd, int x, int side);
 void raycaster(int *maze, bool textured);
 void movement(int *maze);
-void backForward(int *maze);
-void cameraRotate(void);
 bool poll_events(void);
 void close_SDL(void);
 #endif /*HEADER_H*/
