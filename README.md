@@ -1,6 +1,6 @@
 # AMAZE GAME
 ### A simple 3D maze game using raycasting and SDL2
-![textured_1](https://github.com/elcodo254/Amaze-Game/blob/master/screenshots/textured_1.png)
+![textured_1](https://github.com/elcodo254/Amaze-Game/screenshots/textured_1.png)
 -----
 
 ### Installation
@@ -57,12 +57,14 @@ Example:
 ```
 
 ### Improvements
-Although the method used to draw the walls has been improved on over the years, using the non-horizontal method was the most comprehensive.Since the project is still a work in progress, using the new method and adding more features will be embarked on.
+Although the method used to draw the walls has been improved on over the years, using the vertical method was the most comprehensive albeit slow.Since the project is still a work in progress, using the horizontal method of raycasting and adding more features will be embarked on.
 
-###Links
-- [Youtube]
-- [Github]
+### Links
+- [Youtube](https://youtu.be/_fwLmxxiLsM)
+- [Github repo](https://github.com/elcodo254/Amaze-Game.git)
+- [Github pages](https://elcodo254.github.io/Amaze-Game/)
 - [blog]
+
 ### Resources
 - [SDL2 API](https://wiki.libsdl.org/CategoryAPI)
 - [LazyFoo Beginning Game Programming](http://lazyfoo.net/tutorials/SDL/index.php)
