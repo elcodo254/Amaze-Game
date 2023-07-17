@@ -1,12 +1,11 @@
 # AMAZE GAME
 ### A simple 3D maze game using raycasting and SDL2
 ![textured_1](https://github.com/elcodo254/Amaze-Game/blob/7a961ff54af931a03e3aa1986aee6f1f3b95e045/screenshots/textured_1.png)
-
 ### Installation
 - [SDL2](https://www.libsdl.org/download-2.0.php) is required to compile and use this program
 - Compile with `gcc 4.8.4` with the following flags:
     ``gcc -g -Isrc/headers *.c -lSDL2 -lm -o maze `sdl2-config --cflags --libs` `` OR `make all`
-- Run the maze: `./maze
+- Run the maze: `./maze`
 
 -----
 
