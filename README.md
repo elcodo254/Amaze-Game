@@ -1,7 +1,6 @@
 # AMAZE GAME
 ### A simple 3D maze game using raycasting and SDL2
-![textured_1](https://github.com/elcodo254/Amaze-Game/master/screenshots/textured_1.png)
------
+![textured_1](https://github.com/elcodo254/Amaze-Game/blob/7a961ff54af931a03e3aa1986aee6f1f3b95e045/screenshots/textured_1.png)
 
 ### Installation
 - [SDL2](https://www.libsdl.org/download-2.0.php) is required to compile and use this program
@@ -23,7 +22,7 @@ This 3D maze uses raycasting to draw the maze walls, utilizing [LodeV's](http://
 - `E` : strafe right
 - `ESC` : quit
 
-![flat_maze](https://github.com/elcodo254/Amaze-Game/blob/master/screenshots/flat_maze.png)
+![flat_maze](https://github.com/elcodo254/Amaze-Game/blob/7a961ff54af931a03e3aa1986aee6f1f3b95e045/screenshots/flat_maze.png)
 
 #### Maps
 The maps are defined in 2D arrays in text files, which are parsed when passed as an argument to the maze executable. `0` represents open space, all other integers are drawn as walls.
