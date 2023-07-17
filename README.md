@@ -57,8 +57,12 @@ Example:
 ```
 
 ### Improvements
-Although the method used to draw the walls has been improved on over the years, using the non-horizontal method was the most comprehensive.Since the project is still a work in progress, using the new method and adding more feautures will be embarked on.
+Although the method used to draw the walls has been improved on over the years, using the non-horizontal method was the most comprehensive.Since the project is still a work in progress, using the new method and adding more features will be embarked on.
 
+###Links
+- [Youtube]
+- [Github]
+- [blog]
 ### Resources
 - [SDL2 API](https://wiki.libsdl.org/CategoryAPI)
 - [LazyFoo Beginning Game Programming](http://lazyfoo.net/tutorials/SDL/index.php)
