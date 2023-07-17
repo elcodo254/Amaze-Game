@@ -1,6 +1,6 @@
 # AMAZE GAME
 ### A simple 3D maze game using raycasting and SDL2
-![textured_1](https://github.com/elcodo254/Amaze-Game/screenshots/textured_1.png)
+![textured_1](https://github.com/elcodo254/Amaze-Game/master/screenshots/textured_1.png)
 -----
 
 ### Installation
